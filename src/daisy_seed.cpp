@@ -8,83 +8,6 @@ constexpr uint8_t  SEED_LED_PIN  = 7;
 constexpr GPIOPort SEED_TEST_POINT_PORT = PORTG;
 constexpr uint8_t  SEED_TEST_POINT_PIN  = 14;
 
-#ifndef SEED_REV2
-const dsy_gpio_pin seedgpio[33] = {
-    // GPIO 1-8
-    //{DSY_GPIOA, 8}, // removed on Rev4
-    Pin(PORTB, 12),
-    Pin(PORTC, 11),
-    Pin(PORTC, 10),
-    Pin(PORTC, 9),
-    Pin(PORTC, 8),
-    Pin(PORTD, 2),
-    Pin(PORTC, 12),
-    // GPIO 9-16
-    Pin(PORTG, 10),
-    Pin(PORTG, 11),
-    Pin(PORTB, 4),
-    Pin(PORTB, 5),
-    Pin(PORTB, 8),
-    Pin(PORTB, 9),
-    Pin(PORTB, 6),
-    Pin(PORTB, 7),
-    // GPIO 17-24
-    Pin(PORTC, 0),
-    Pin(PORTA, 3),
-    Pin(PORTB, 1),
-    Pin(PORTA, 7),
-    Pin(PORTA, 6),
-    Pin(PORTC, 1),
-    Pin(PORTC, 4),
-    Pin(PORTA, 5),
-    // GPIO 25-31
-    Pin(PORTA, 4),
-    Pin(PORTA, 1),
-    Pin(PORTA, 0),
-    Pin(PORTD, 11),
-    Pin(PORTG, 9),
-    Pin(PORTA, 2),
-    Pin(PORTB, 14),
-    Pin(PORTB, 15),
-
-    // Seed2DFM exclusive pins
-    Pin(PORTC, 2),
-    Pin(PORTC, 3),
-};
-#else
-const dsy_gpio_port seed_ports[32] = {
-    DSY_GPIOA, DSY_GPIOB, DSY_GPIOC, DSY_GPIOC, DSY_GPIOC, DSY_GPIOC, DSY_GPIOD,
-    DSY_GPIOC, DSY_GPIOG, DSY_GPIOG, DSY_GPIOB, DSY_GPIOB, DSY_GPIOB, DSY_GPIOB,
-    DSY_GPIOB, DSY_GPIOB, DSY_GPIOC, DSY_GPIOA, DSY_GPIOA, DSY_GPIOB, DSY_GPIOA,
-    DSY_GPIOA, DSY_GPIOC, DSY_GPIOC, DSY_GPIOA, DSY_GPIOA, DSY_GPIOA, DSY_GPIOD,
-    DSY_GPIOG, DSY_GPIOA, DSY_GPIOB, DSY_GPIOB,
-};
-
-const uint8_t seed_pins[32] = {
-    8, 12, 11, 10, 9, 8, 7, 12, 10, 11, 4, 5,  8, 9, 6,  7,
-    0, 1,  3,  1,  7, 6, 1, 5,  5,  4,  0, 11, 9, 2, 14, 15,
-};
-
-const dsy_gpio_pin seedgpio[32] = {
-    {seed_ports[0], seed_pins[0]},   {seed_ports[1], seed_pins[1]},
-    {seed_ports[2], seed_pins[2]},   {seed_ports[3], seed_pins[3]},
-    {seed_ports[4], seed_pins[4]},   {seed_ports[5], seed_pins[5]},
-    {seed_ports[6], seed_pins[6]},   {seed_ports[7], seed_pins[7]},
-    {seed_ports[8], seed_pins[8]},   {seed_ports[9], seed_pins[9]},
-    {seed_ports[10], seed_pins[10]}, {seed_ports[11], seed_pins[11]},
-    {seed_ports[12], seed_pins[12]}, {seed_ports[13], seed_pins[13]},
-    {seed_ports[14], seed_pins[14]}, {seed_ports[15], seed_pins[15]},
-    {seed_ports[16], seed_pins[16]}, {seed_ports[17], seed_pins[17]},
-    {seed_ports[18], seed_pins[18]}, {seed_ports[19], seed_pins[19]},
-    {seed_ports[20], seed_pins[20]}, {seed_ports[21], seed_pins[21]},
-    {seed_ports[22], seed_pins[22]}, {seed_ports[23], seed_pins[23]},
-    {seed_ports[24], seed_pins[24]}, {seed_ports[25], seed_pins[25]},
-    {seed_ports[26], seed_pins[26]}, {seed_ports[27], seed_pins[27]},
-    {seed_ports[28], seed_pins[28]}, {seed_ports[29], seed_pins[29]},
-    {seed_ports[30], seed_pins[30]}, {seed_ports[31], seed_pins[31]},
-};
-#endif
-
 // Public Initialization
 
 /** Vestigial function body for old function
@@ -160,18 +83,6 @@ void DaisySeed::DeInit()
     // audio_handle.DeInit();
 
     system.DeInit();
-}
-
-dsy_gpio_pin DaisySeed::GetPin(uint8_t pin_idx)
-{
-    dsy_gpio_pin p;
-    pin_idx = pin_idx < sizeof(seedgpio) / sizeof(seedgpio[0]) ? pin_idx : 0;
-#ifndef SEED_REV2
-    p = seedgpio[pin_idx];
-#else
-    p = {seed_ports[pin_idx], seed_pins[pin_idx]};
-#endif
-    return p;
 }
 
 void DaisySeed::DelayMs(size_t del)

@@ -293,7 +293,6 @@
     <ClCompile Include="src\usbd\usbd_desc.c" />
     <ClCompile Include="src\util\bsp_sd_diskio.c" />
     <ClCompile Include="src\util\color.cpp" />
-    <ClCompile Include="src\util\hal_map.c" />
     <ClCompile Include="src\util\oled_fonts.c" />
     <ClCompile Include="src\util\sd_diskio.c" />
     <ClCompile Include="src\util\unique_id.c" />

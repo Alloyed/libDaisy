@@ -331,7 +331,6 @@ namespace patch_sm
 
         /** Fixed-function Digital I/O */
         user_led.Init(PIN_USER_LED, GPIO::Mode::OUTPUT);
-        //gate_in_1.Init((dsy_gpio_pin *)&DaisyPatchSM::B10);
         gate_in_1.Init(B10);
         gate_in_2.Init(B9);
 
@@ -442,14 +441,6 @@ namespace patch_sm
     void DaisyPatchSM::ProcessDigitalControls() {}
 
     float DaisyPatchSM::GetAdcValue(int idx) { return controls[idx].Value(); }
-
-    dsy_gpio_pin DaisyPatchSM::GetPin(const PinBank bank, const int idx)
-    {
-        if(idx <= 0 || idx > 10)
-            return DUMMYPIN;
-        else
-            return kPinMap[static_cast<int>(bank)][idx - 1];
-    }
 
     void DaisyPatchSM::StartDac(DacHandle::DacCallback callback)
     {

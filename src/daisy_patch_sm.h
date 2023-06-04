@@ -135,16 +135,6 @@ namespace patch_sm
         /** Returns the current value for one of the ADCs */
         float GetAdcValue(int idx);
 
-        /** Returns the STM32 port/pin combo for the desired pin (or an invalid pin for HW only pins)
-         *
-         *  Macros at top of file can be used in place of separate arguments (i.e. GetPin(A4), etc.)
-         * 
-         *  \param bank should be one of the PinBank options above
-         *  \param idx pin number between 1 and 10 for each of the pins on each header.
-         *  \deprecated please use the Pin definitions in daisy::patch_sm instead
-         */
-        dsy_gpio_pin GetPin(const PinBank bank, const int idx);
-
         /** Starts the DAC for the CV Outputs 
          * 
          *  By default this starts by running the 

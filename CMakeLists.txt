@@ -1,6 +1,7 @@
 cmake_policy(SET CMP0048 NEW)
-project (libdaisy VERSION 1.0.0)
 cmake_minimum_required(VERSION 3.20)
+project (libdaisy VERSION 1.0.0)
+
 
 set(TARGET daisy)
 
@@ -16,7 +17,6 @@ add_library(${TARGET} STATIC
     ${MODULE_DIR}/per/sai.cpp
     ${MODULE_DIR}/per/sdmmc.cpp
     ${MODULE_DIR}/util/bsp_sd_diskio.c
-    ${MODULE_DIR}/util/hal_map.c
     ${MODULE_DIR}/util/oled_fonts.c
     ${MODULE_DIR}/util/sd_diskio.c
     ${MODULE_DIR}/util/usbh_diskio.c
