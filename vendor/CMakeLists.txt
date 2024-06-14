@@ -129,7 +129,7 @@ add_library(FatFs STATIC
   FatFs/src/ff_gen_drv.c
 
   # due to config (in src/sys) which has _USE_LFN = 1
-  FatFS/src/option/unicode.c
+  FatFs/src/option/unicode.c
 )
 
 target_include_directories(FatFs PUBLIC
